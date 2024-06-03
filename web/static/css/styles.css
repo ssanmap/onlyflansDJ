@@ -1,0 +1,5 @@
+.custom-img {
+    height: auto;
+    max-height: 200px; /* Ajusta la altura máxima según tus necesidades */
+    object-fit: cover;
+}

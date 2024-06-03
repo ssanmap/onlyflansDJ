@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5"> 
+    <h1>Lista de productos disponibles</h1>
+    <div class="row mb-5">
+        {% for flan in flanes %}
+        <div class="col-md-4 mb-4">
+            <div class="card mb-4">
+                <img src="{{ flan.image_url }}" class="card-img-top img-fluid custom-img" alt="{{ flan.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ flan.name }}</h5>
+                    <p class="card-text"> {{ flan.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
