@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,  redirect
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from .models import Flan
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import ContactFormForm
+from .forms import LoginForm
 from .models import ContactForm
 from .models import Receta
 
@@ -20,6 +22,7 @@ def about(request):
     }
     return render(request, 'about.html', {'company_info': company_info})
 
+@login_required
 def welcome(request):
     flanes_privados = Flan.objects.filter(is_private=True)
     return render(request, 'welcome.html', {'flanes': flanes_privados})
@@ -45,3 +48,23 @@ def exito(request):
 def recetas(request):
     recetas = Receta.objects.all()
     return render(request, 'recetas.html', {'recetas': recetas})    
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('welcome')
+            else:
+                form.add_error(None, 'Nombre de usuario o contraseña incorrectos.')
+    else:
+        form = LoginForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+def logout(request):
+    auth_logout(request)
+    return render(request, 'registration/logout.html')

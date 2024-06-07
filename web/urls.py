@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib import admin
-from .views import index, about, welcome, contacto, exito, recetas
+from .views import index, about, welcome, contacto, exito, recetas, login, logout
 
 urlpatterns = [
     path('', index, name='index'),
@@ -11,4 +11,6 @@ urlpatterns = [
     path('recetas/', recetas, name='recetas'),
     path('admin/', admin.site.urls, name='admin'),
     path('accounts/', include('django.contrib.auth.urls')),
+     path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
 ]
