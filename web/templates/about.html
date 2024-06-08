@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Acerca de {{ company_info.name }}</h1>
-<p>{{ company_info.description }}</p>
-<p>Fecha de creación: {{ company_info.creation_date }}</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title">Acerca de {{ company_info.name }}</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ company_info.description }}</p>
+                    <p class="card-text"><strong>Fecha de creación:</strong> {{ company_info.creation_date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

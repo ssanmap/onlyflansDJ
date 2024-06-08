@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib import admin
-from .views import index, about, welcome, contacto, exito, recetas, login, logout
+from .views import index, about, welcome, contacto, exito, recetas, login, logout, crear_flan
 
 urlpatterns = [
     path('', index, name='index'),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
      path('login/', login, name='login'),
     path('logout/', logout, name='logout'),
+    path('crear_flan/', crear_flan, name='crear_flan'),
 ]

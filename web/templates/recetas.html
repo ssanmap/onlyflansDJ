@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2 class="mt-5 mb-4">Recetas</h2>
+<div class="container mt-5 mb-5 ">
+    <h2 class="mb-4 text-center">Recetas</h2>
     <div class="row mb-5">
         {% for receta in recetas %}
-        <div class="col-md-12 mb-4">
-            <div class="card mb-5">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
                     <h4 class="card-title">{{ receta.nombre }}</h4>
                     <h5 class="card-subtitle mb-2 text-muted">Ingredientes:</h5>

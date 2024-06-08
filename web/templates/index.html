@@ -3,6 +3,12 @@
 {% block content %}
 <div class="container mt-5 mb-5"> 
     <h1>Lista de productos disponibles</h1>
+    <form action="{% url 'index' %}" method="get" class="form-inline mt-2 mt-md-0 mb-2">
+        <input class="form-control mr-sm-2" type="text" name="search_query" placeholder="Buscar Flanes" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+    
+    
     <div class="row mb-5">
         {% for flan in flanes %}
         <div class="col-md-4 mb-4">
@@ -18,4 +24,6 @@
         {% endfor %}
     </div>
 </div>
+
+
 {% endblock %}
